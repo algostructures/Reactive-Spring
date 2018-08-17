@@ -42,7 +42,8 @@ public class EmployeeResource {
                     Flux<Long> interval = Flux.interval(Duration.ofSeconds(5));
 
                     Flux<EmployeeEvent> employeeEventFlux = Flux.fromStream(
-                            Stream.generate(() -> new EmployeeEvent(employee, new Date()))
+                            Stream.generate(() -> new EmployeeEvent(employee,
+                                    new Date()))
                     );
 
                     return Flux.zip(interval, employeeEventFlux).map(Tuple2::getT2);
