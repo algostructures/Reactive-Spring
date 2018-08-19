@@ -45,7 +45,7 @@ public class RouterHandlers {
                 .body(
                         employeeRepository.findById(empId)
                                 .flatMapMany(employee -> {
-                                    Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
+                                    Flux<Long> interval = Flux.interval(Duration.ofSeconds(2));
 
                                     Flux<EmployeeEvent> employeeEventFlux = Flux.fromStream(
                                             Stream.generate(() -> new EmployeeEvent(employee,
